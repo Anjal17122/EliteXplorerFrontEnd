@@ -62,7 +62,7 @@ const TocDetail1 = ({ result, onFormSave }: tocDetail1) => {
       </Row>
       <Row gutter={[16, 16]}>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
-          <FormItem name={"title"} label={"Title"} />
+          <FormItem name={"title"} label={"Itinerary Title"} />
         </Col>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
           <FormItem name={"preparedTo"} label={"Prepared To"} />
@@ -149,7 +149,7 @@ const TocDetail1 = ({ result, onFormSave }: tocDetail1) => {
       <Row gutter={[16, 16]}>
         <Col span={12} md={16} lg={16} sm={24} xs={24}>
           <Form.Item
-            label="Description"
+            label="Front Page Description"
             name={"mainText"}
             rules={[
               {

@@ -24,19 +24,19 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Home Page", AllUrls.urlHomePage, <UserOutlined />, [
-    getItem("Add PDF2", AllUrls.urlSavePdf2Page),
-    getItem("Pdf2 List", AllUrls.urlHomePage),
+  getItem("Detail Itinerary", AllUrls.urlHomePage, <UserOutlined />, [
+    getItem("Detail Itinerary Input", AllUrls.urlSavePdf2Page),
+    getItem("Detail Itinerary Output", AllUrls.urlHomePage),
   ]),
 
-  getItem("TOC Page", "z", <UserOutlined />, [
-    getItem("Save Toc", AllUrls.urlSaveTocPage),
-    getItem("TOC List", AllUrls.urlTocListPage),
+  getItem("Short Itinerary", "z", <UserOutlined />, [
+    getItem("Short Itinerary Input", AllUrls.urlSaveTocPage),
+    getItem("Short Itinerary Output", AllUrls.urlTocListPage),
   ]),
 
-  getItem("Main PDF Generate", "x", <UserOutlined />, [
-    getItem("Save Main ", AllUrls.urlMainSaveListPage),
-    getItem("Pdf List Page", AllUrls.urlMainPdfListPage),
+  getItem("Itinerary Basket", "x", <UserOutlined />, [
+    getItem("Itinerary Basket Input ", AllUrls.urlMainSaveListPage),
+    getItem("Itinerary Basket OUtput", AllUrls.urlMainPdfListPage),
   ]),
   getItem("Check Page", AllUrls.urlCheckPage, <UserOutlined />),
 ];
@@ -79,7 +79,7 @@ const Typography: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <h2>Elite Xplorer</h2>
+          <h2>Elite Explorer</h2>
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>

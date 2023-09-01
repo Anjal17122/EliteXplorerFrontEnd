@@ -32,14 +32,6 @@ const TocDetailUpdatePage = () => {
       });
     });
   };
-  const Pdf1TocDataSample: Pdf1TocData = {
-    id: 0,
-    title: "",
-    subTitle: "",
-    day: 1,
-    pdf1Toc: Number(id),
-  };
-
   const downloadPdf = () => {
     downlaodPDFMain(id === undefined ? "0" : id);
   };

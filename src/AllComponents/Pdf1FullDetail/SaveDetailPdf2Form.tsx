@@ -23,18 +23,14 @@ const SaveDetailPdf2Form = ({
 }: detail) => {
   const [result, setResult] = useState<pdf2Body>();
   const [openModel, setOpenModel] = useState(false);
-  const [pdf1Data, setPdf1Data] = useState<Pdf1TocData>();
+
   useEffect(() => {
     getPdfById(pdf2Id.toString()).then((res) => {
       console.log(res.data);
       setResult(res.data);
       // setResult(res.data);
     });
-    getPdf1ById(pdf1Id.toString()).then((res) => {
-      console.log(res.data);
-      setPdf1Data(res.data);
-      // setResult(res.data);
-    });
+
   }, []);
   const saveForm = (param: pdf2Body) => {
     const body: pdf2Body = {

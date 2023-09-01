@@ -4,3 +4,4 @@ export interface Pdf1Pdf2Type {
   pdf2Id: number;
   day: number;
 }
+

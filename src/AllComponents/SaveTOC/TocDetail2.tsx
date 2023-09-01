@@ -7,8 +7,6 @@ import { SubmitBtn } from "../component/SubmitBtn";
 
 type fillData = {
   data: Pdf1TocData;
-  tabledataload: boolean;
-  setTableDataLoad: (fromData: boolean) => void;
 };
 const TocDetail2 = ({ data }: fillData) => {
   const [form] = Form.useForm();
@@ -38,13 +36,13 @@ const TocDetail2 = ({ data }: fillData) => {
     >
       <Row gutter={[16, 16]}>
         <Col span={8} md={8} lg={8} sm={12} xs={12}>
-          <FormItem name={"title"} label="Title" />
-        </Col>
-        <Col span={8} md={8} lg={8} sm={12} xs={12}>
-          <FormItem name={"subTitle"} label="Sub Title" />
-        </Col>
-        <Col span={8} md={8} lg={8} sm={12} xs={12}>
           <FormItem name={"day"} label="Day" />
+        </Col>
+        <Col span={8} md={8} lg={8} sm={12} xs={12}>
+          <FormItem name={"title"} label="Destination" />
+        </Col>
+        <Col span={8} md={8} lg={8} sm={12} xs={12}>
+          <FormItem name={"subTitle"} label="Activities" />
         </Col>
       </Row>
       <SubmitBtn />

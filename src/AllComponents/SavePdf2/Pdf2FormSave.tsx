@@ -76,7 +76,7 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
           <FormItem name={"title"} label={"Title"} />
         </Col>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
-          <FormItem name={"subTitle"} label="Sub Title" />
+          <FormItem name={"subTitle"} label="Day and Movement" />
         </Col>
       </Row>
       <Row gutter={[16, 16]}>
@@ -99,12 +99,16 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
 
       <Row gutter={[16, 16]}>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
-          <FormItem name={"tocTitle"} label="Toc Title " validation={false} />
+          <FormItem
+            name={"tocTitle"}
+            label="Short Itinerary Title"
+            validation={false}
+          />
         </Col>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
           <FormItem
             name={"tocSubTitle"}
-            label="TOC Subtitle"
+            label="Short Itinerary Detail"
             validation={false}
           />
         </Col>
@@ -129,15 +133,15 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
             />
           </Form.Item>
         </Col>
-        <Col span={12} md={12} lg={12} sm={24} xs={24}>
+        {/* <Col span={12} md={12} lg={12} sm={24} xs={24}>
           <FormItem name="hint" label="Hint" />
-        </Col>
+        </Col> */}
       </Row>
 
       <Row gutter={[16, 16]}>
         <Col span={12} md={16} lg={16} sm={24} xs={24}>
           <Form.Item
-            label="Description"
+            label="Day Description"
             name={"text"}
             rules={[
               {
