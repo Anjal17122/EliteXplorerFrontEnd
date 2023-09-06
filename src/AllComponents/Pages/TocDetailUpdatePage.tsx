@@ -13,6 +13,7 @@ import { downloadpdfTOC } from "../../Utils/Request/Method";
 const TocDetailUpdatePage = () => {
   const { id } = useParams();
   const [result, setResult] = useState<PDF1>();
+  const [tableRefresh, setTableRefresh] = useState();
   useEffect(() => {
     getTocPdf1ById(id === undefined ? "0" : id).then((res) => {
       const pdf1Data: PDF1 = res.data;
@@ -55,8 +56,12 @@ const TocDetailUpdatePage = () => {
       >
         Download
       </Button>
-      <TocDetail2 data={Pdf1TocDataSample} />
-      <TocDetail2Table pdf1TocId={Number(id)} />
+      <TocDetail2 data={Pdf1TocDataSample} tableRefresh={setTableRefresh} />
+      <TocDetail2Table
+        pdf1TocId={Number(id)}
+        tableRefreshData={tableRefresh}
+        tableRefresh={setTableRefresh}
+      />
     </>
   );
 };

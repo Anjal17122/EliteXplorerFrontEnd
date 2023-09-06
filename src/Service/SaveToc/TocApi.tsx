@@ -6,6 +6,7 @@ import {
   getTocPdf1,
   saveTOC1,
   saveTOC2,
+  tocCommonGetRequests,
 } from "./Requests";
 import { PDF1, Pdf1TocData } from "./TocType";
 
@@ -29,12 +30,36 @@ export const tocGetByPdf = (id: number, page: number, size: number) => {
   return getTocByPdf(url);
 };
 
-export const getAllTocPdf = (page: number, size: number) => {
-  const url = `${baseUrl}/pdf1/toc/all/${page}/${size}`;
+export const getAllTocPdf = () => {
+  const url = `${baseUrl}/pdf1/toc/all`;
   return getAllTocPdf1(url);
 };
 
 export const deleteTocById = (id: number) => {
   const url = `${baseUrl}/toc/only/delete/${id}`;
   return deleteById(url);
+};
+
+export const searchByTitleToc = (title: string) => {
+  const url = `${baseUrl}/pdf1/toc/search/by/title?title=${title}`;
+  return tocCommonGetRequests(url);
+};
+
+export const searchByNameTOc = (name: string) => {
+  const url = `${baseUrl}/pdf1/toc/search/by/name?name=${name}`;
+  return tocCommonGetRequests(url);
+};
+
+export const searchByIdTOc = (id: string) => {
+  const url = `${baseUrl}/pdf1/toc/search/by/id?id=${id}`;
+  return tocCommonGetRequests(url);
+};
+
+export const cloneToc = (id: string) => {
+  const url = `${baseUrl}/pdf1/toc/clone/${id}`;
+  return tocCommonGetRequests(url);
+};
+export const transferToc = (id: string) => {
+  const url = `${baseUrl}/pdf1/toc/transfer/${id}`;
+  return tocCommonGetRequests(url);
 };

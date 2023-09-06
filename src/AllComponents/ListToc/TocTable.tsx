@@ -7,13 +7,14 @@ import { PDF1, PDF1List } from "../../Service/SaveToc/TocType";
 import { useNavigate } from "react-router-dom";
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
 import { downloadpdfTOC } from "../../Utils/Request/Method";
-
-const TocTable = () => {
+import TocActionMenu from "./TocActionMenu";
+type tableFill = { tableData: PDF1List[]; setData: (data: PDF1List[]) => void };
+const TocTable = ({ tableData, setData }: tableFill) => {
   const size = 3;
-  const [current, setCurrent] = useState(0);
+  // const [current, setCurrent] = useState(0);
+  // const [total, setTotal] = useState(50);
   const [loading, setLoading] = useState(false);
-  const [total, setTotal] = useState(50);
-  const [tableData, setTableData] = useState();
+
   const navigate = useNavigate();
 
   const columns: ColumnsType<PDF1List> = [
@@ -46,36 +47,20 @@ const TocTable = () => {
           <Button
             type="link"
             onClick={() => {
-              navigate(`${AllUrls.urlUpdateTocPage_}/${record.id}`);
-            }}
-          >
-            Update
-          </Button>
-          <Button
-            type="link"
-            onClick={() => {
               downloadpdfTOC(record.id.toString());
             }}
           >
             Generate PDF
           </Button>
+          <TocActionMenu
+            id={record.id.toString()}
+            setData={setData}
+            setTableLoading={setLoading}
+          />
         </Space>
       ),
     },
   ];
-
-  useEffect(() => {
-    setLoading(true);
-    getAllTocPdf(current, size).then((res) => {
-      const pdf1ListArray = res.data.content.map((pdf1: PDF1) => ({
-        key: pdf1.id,
-        ...pdf1,
-      }));
-      setTableData(pdf1ListArray);
-      setTotal(res.data.totalElements);
-      setLoading(false);
-    });
-  }, [current]);
 
   return (
     <>
@@ -83,9 +68,12 @@ const TocTable = () => {
         loading={loading}
         columns={columns}
         dataSource={tableData}
-        pagination={false}
+        pagination={{
+          pageSize: size,
+          hideOnSinglePage: true,
+        }}
       />
-      <PaginationItem currentPage={setCurrent} pageSize={size} total={total} />
+      {/* <PaginationItem currentPage={setCurrent} pageSize={size} total={total} /> */}
     </>
   );
 };

@@ -7,8 +7,9 @@ import { SubmitBtn } from "../component/SubmitBtn";
 
 type fillData = {
   data: Pdf1TocData;
+  tableRefresh: (anyData: any) => void;
 };
-const TocDetail2 = ({ data }: fillData) => {
+const TocDetail2 = ({ data, tableRefresh }: fillData) => {
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -21,7 +22,9 @@ const TocDetail2 = ({ data }: fillData) => {
       id: data.id,
       pdf1Toc: data.pdf1Toc,
     };
-    savePdfToc2(abc);
+    savePdfToc2(abc).then((res) => {
+      tableRefresh(res.data);
+    });
   };
 
   return (

@@ -17,7 +17,29 @@ export interface PDF1 {
   subCategoryId: number;
   subCategory: string;
 }
+export interface sendEmailType {
+  pdfId: string;
+  subject: string;
+  emailTo: string;
+  message: string;
+  pdfType: PdfType | null;
+}
 
+export enum PdfType {
+  fullitinerary,
+  shortitinerary,
+  tocitinerary,
+}
+
+export const mapPdf1ToSendEmail = (pdfData: PDF1): sendEmailType => {
+  return {
+    pdfId: pdfData.id.toString(),
+    subject: pdfData.title,
+    emailTo: pdfData.preparedTo,
+    message: pdfData.mainText,
+    pdfType: null, // You can assign the appropriate PdfType value here if needed
+  };
+};
 export interface PDF1List {
   key: number;
   id: number;

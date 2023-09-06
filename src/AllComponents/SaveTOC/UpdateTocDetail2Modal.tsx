@@ -6,9 +6,15 @@ type tocModal = {
   openModal: boolean;
   data: Pdf1TocData;
   setOpenModal: (modalOpen: boolean) => void;
+  tableRefresh: (anyData: any) => void;
 };
 
-const UpdateTOcDetail2Modal = ({ openModal, data, setOpenModal }: tocModal) => {
+const UpdateTOcDetail2Modal = ({
+  openModal,
+  data,
+  setOpenModal,
+  tableRefresh,
+}: tocModal) => {
   const handleOk = () => {
     setOpenModal(false);
   };
@@ -26,7 +32,7 @@ const UpdateTOcDetail2Modal = ({ openModal, data, setOpenModal }: tocModal) => {
         onCancel={handleCancel}
         footer={null}
       >
-        <TocDetail2 data={data} />
+        <TocDetail2 tableRefresh={tableRefresh} data={data} />
       </Modal>
     </>
   );

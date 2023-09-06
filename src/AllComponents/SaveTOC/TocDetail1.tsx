@@ -38,9 +38,9 @@ const TocDetail1 = ({ result, onFormSave }: tocDetail1) => {
     const abc = {
       ...w,
       file: image1S,
-      subCategoryId: Array.isArray(w.subCategoryId)
-        ? w.subCategoryId[1]
-        : w.subCategoryId,
+      // subCategoryId: Array.isArray(w.subCategoryId)
+      //   ? w.subCategoryId[1]
+      //   : w.subCategoryId,
     };
     onFormSave(abc);
   };
@@ -93,7 +93,7 @@ const TocDetail1 = ({ result, onFormSave }: tocDetail1) => {
           <FormItem name={"currency"} label="Currency" />
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
           <Form.Item
             label="Choose Category"
@@ -113,7 +113,7 @@ const TocDetail1 = ({ result, onFormSave }: tocDetail1) => {
             />
           </Form.Item>
         </Col>
-      </Row>
+      </Row> */}
       <Row gutter={[16, 16]}>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
           <Form.Item

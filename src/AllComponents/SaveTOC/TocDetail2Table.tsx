@@ -8,8 +8,14 @@ import UpdateTOcDetail2Modal from "./UpdateTocDetail2Modal";
 
 type data = {
   pdf1TocId: number;
+  tableRefresh: (anyData: any) => void;
+  tableRefreshData: any;
 };
-const TocDetail2Table = ({ pdf1TocId }: data) => {
+const TocDetail2Table = ({
+  pdf1TocId,
+  tableRefresh,
+  tableRefreshData,
+}: data) => {
   const Pdf1TocDataSample: Pdf1TocData = {
     id: 0,
     title: "",
@@ -59,7 +65,7 @@ const TocDetail2Table = ({ pdf1TocId }: data) => {
             type="link"
             onClick={() => {
               deleteTocById(record.id).then((res) => {
-                message.success("Deleted Successfully");
+                tableRefresh(record.id);
               });
             }}
           >
@@ -83,10 +89,11 @@ const TocDetail2Table = ({ pdf1TocId }: data) => {
       setTotal(res.data.totalElements);
       setLoading(false);
     });
-  }, [current]);
+  }, [current, tableRefreshData]);
   return (
     <>
       <UpdateTOcDetail2Modal
+        tableRefresh={tableRefresh}
         data={record}
         openModal={modalOpen}
         setOpenModal={setModalOpen}

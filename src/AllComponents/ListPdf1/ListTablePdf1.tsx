@@ -1,22 +1,27 @@
 import { Button, Space, Table } from "antd";
-import PaginationItem from "../component/Pagination";
 import { useEffect, useState } from "react";
-import { getAllTocPdf } from "../../Service/SaveToc/TocApi";
 import { ColumnsType } from "antd/es/table";
 import { PDF1, PDF1List } from "../../Service/SaveToc/TocType";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
+import type { MenuProps } from "antd";
 import {
   downlaodPDFMain,
   downlaodPDFMainToc,
-  downloadpdfTOC,
 } from "../../Utils/Request/Method";
+import MenuComponent from "../component/MenuComponent";
+import Pdf1DownloadMenu from "./Pdf1DownloadMenu";
+import Pdf1ActionMenu from "./Pdf1ActionMenu";
+import DeleteList from "./DeleteList";
+import Pdf1SendEmailModal from "./Pdf1SendEmailModal";
 
-type fulldata = { data: PDF1List[] };
-const ListTablePdf1 = ({ data }: fulldata) => {
+type fulldata = { data: PDF1List[]; setData: (data: PDF1List[]) => void };
+const ListTablePdf1 = ({ data, setData }: fulldata) => {
   const size = 5;
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
+
   const columns: ColumnsType<PDF1List> = [
     {
       title: "Id",
@@ -40,40 +45,32 @@ const ListTablePdf1 = ({ data }: fulldata) => {
     },
 
     {
-      title: "Category",
-      dataIndex: "subCategory",
-      key: "subCategory",
+      title: "Days",
+      dataIndex: "totalDays",
+      key: "totalDays",
+    },
+
+    {
+      title: "Download",
+      key: "Downloads",
+      render: (_, record) => <Pdf1DownloadMenu id={record.id.toString()} />,
     },
 
     {
       title: "Action",
       key: "action",
       render: (_, record) => (
-        <Space size="middle">
-          <Button
-            type="link"
-            onClick={() => {
-              navigate(`${AllUrls.urlMainUpdateListPage_}/${record.id}`);
-            }}
-          >
-            Update
-          </Button>
-          <Button
-            type="link"
-            onClick={() => {
-              downlaodPDFMain(record.id.toString());
-            }}
-          >
-            Generate PDF
-          </Button>
-          <Button
-            type="link"
-            onClick={() => {
-              downlaodPDFMainToc(record.id.toString());
-            }}
-          >
-            Generate TOC Only
-          </Button>
+        <Space>
+          <Pdf1ActionMenu
+            id={record.id.toString()}
+            setTableLoading={setLoading}
+            setData={setData}
+          />
+          <DeleteList
+            id={record.id.toString()}
+            setTableLoading={setLoading}
+            setData={setData}
+          />
         </Space>
       ),
     },
@@ -103,6 +100,7 @@ const ListTablePdf1 = ({ data }: fulldata) => {
           hideOnSinglePage: true,
         }}
       />
+
       {/* <PaginationItem currentPage={setCurrent} pageSize={size} total={total} /> */}
     </>
   );

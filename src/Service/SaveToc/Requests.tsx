@@ -66,3 +66,12 @@ export const deleteById = async (url: string) => {
     checkIfError(error);
   }
 };
+
+export const tocCommonGetRequests = async (url: string) => {
+  try {
+    const res = await axios.get(url, headers());
+    return res.data;
+  } catch (error: unknown) {
+    checkIfError(error);
+  }
+};
