@@ -8,6 +8,7 @@ import { ArrowRightOutlined, DownloadOutlined } from "@ant-design/icons";
 import { downlaodPDFMain } from "../../Utils/Request/Method";
 import { getPdf1ById, savePdf1 } from "../../Service/Pdf1List/Pdf1ListApi";
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
+import EmailAndDownloadBtn from "../component/EmailAndDownloadBtn";
 
 const TocDetailUpdatePage = () => {
   const { id } = useParams();
@@ -32,9 +33,7 @@ const TocDetailUpdatePage = () => {
       });
     });
   };
-  const downloadPdf = () => {
-    downlaodPDFMain(id === undefined ? "0" : id);
-  };
+
   return (
     <>
       <Button
@@ -54,7 +53,7 @@ const TocDetailUpdatePage = () => {
       </Button>
 
       <TocDetail1 onFormSave={onDataReceived} result={result} />
-      <Button
+      {/* <Button
         type="primary"
         shape="round"
         value={id}
@@ -63,7 +62,8 @@ const TocDetailUpdatePage = () => {
         onClick={downloadPdf}
       >
         Download
-      </Button>
+      </Button> */}
+      <EmailAndDownloadBtn id={id === undefined ? "0" : id} />
     </>
   );
 };

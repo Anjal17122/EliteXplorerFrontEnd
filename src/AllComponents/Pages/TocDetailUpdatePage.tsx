@@ -9,6 +9,8 @@ import TocDetail2Table from "../SaveTOC/TocDetail2Table";
 import { Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import { downloadpdfTOC } from "../../Utils/Request/Method";
+import TocSendEmailModal from "../ListToc/TocSendEmailModal";
+import TocEmailAndDownloadBtn from "../component/TocEmailAndDownloadBtn";
 
 const TocDetailUpdatePage = () => {
   const { id } = useParams();
@@ -40,22 +42,11 @@ const TocDetailUpdatePage = () => {
     pdf1Toc: Number(id),
   };
 
-  const downloadPdf = () => {
-    downloadpdfTOC(id === undefined ? "0" : id);
-  };
   return (
     <>
+      <TocEmailAndDownloadBtn id={id === undefined ? "0" : id} />
       <TocDetail1 onFormSave={onDataReceived} result={result} />
-      <Button
-        type="primary"
-        shape="round"
-        value={id}
-        icon={<DownloadOutlined />}
-        size={"large"}
-        onClick={downloadPdf}
-      >
-        Download
-      </Button>
+
       <TocDetail2 data={Pdf1TocDataSample} tableRefresh={setTableRefresh} />
       <TocDetail2Table
         pdf1TocId={Number(id)}

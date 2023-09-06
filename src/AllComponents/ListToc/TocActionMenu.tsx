@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, message } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
@@ -10,6 +10,7 @@ import {
   getAllTocPdf,
   transferToc,
 } from "../../Service/SaveToc/TocApi";
+import TocSendEmailModal from "./TocSendEmailModal";
 
 type TocActionBody = {
   id: string;
@@ -18,6 +19,7 @@ type TocActionBody = {
 };
 const TocActionMenu = ({ id, setData, setTableLoading }: TocActionBody) => {
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -48,7 +50,7 @@ const TocActionMenu = ({ id, setData, setTableLoading }: TocActionBody) => {
 
     {
       key: "3",
-      label: "Bucket Transfer",
+      label: "Basket Transfer",
       onClick: () => {
         setTableLoading(true);
         transferToc(id).then((a) => {
@@ -64,6 +66,13 @@ const TocActionMenu = ({ id, setData, setTableLoading }: TocActionBody) => {
         });
       },
     },
+    {
+      key: "4",
+      label: "Send Email",
+      onClick: () => {
+        setModalOpen(true);
+      },
+    },
   ];
   return (
     <>
@@ -77,6 +86,7 @@ const TocActionMenu = ({ id, setData, setTableLoading }: TocActionBody) => {
           <MenuOutlined />
         </Button>
       </Dropdown>
+      <TocSendEmailModal setOpen={setModalOpen} open={modalOpen} pdf1Id={id} />
     </>
   );
 };
