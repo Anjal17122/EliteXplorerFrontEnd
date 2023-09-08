@@ -1,6 +1,6 @@
 import { DownloadOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Col, Row } from "antd";
-import { downlaodPDFMainToc } from "../../Utils/Request/Method";
+import { downlaodPDFMainToc, downloadpdfTOC } from "../../Utils/Request/Method";
 import { useState } from "react";
 import TocSendEmailModal from "../ListToc/TocSendEmailModal";
 
@@ -8,7 +8,7 @@ type emailAndDownloadBtnBody = { id: string };
 const TocEmailAndDownloadBtn = ({ id }: emailAndDownloadBtnBody) => {
   const [modalOpen, setModalOpen] = useState(false);
   const downloadPdf = () => {
-    downlaodPDFMainToc(id);
+    downloadpdfTOC(id);
   };
 
   const sendEmail = () => {

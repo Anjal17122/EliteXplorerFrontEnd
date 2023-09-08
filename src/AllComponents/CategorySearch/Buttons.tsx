@@ -2,30 +2,25 @@ import { Button, Input } from "antd";
 import { useState, useEffect } from "react";
 import { GrRefresh } from "react-icons/Gr";
 import { useGlobalState } from "../../GlobalState/GloabalStates";
+import { pdf2Body, pdf2BodyList } from "../../Service/SavePdf2/Pdf2Type";
+import {
+  searchPdf2All,
+  searchPdf2ById,
+  searchPdf2ByTitle,
+} from "../../Service/Pdf2List/Pdf2ListApi";
 
 const { Search } = Input;
 type ButtonType = {
-  id: string;
-  urlChange: (url: any) => void;
+  setPdf2List: (url: pdf2BodyList[]) => void;
 };
-const Buttons = ({ id, urlChange }: ButtonType) => {
-  const [refreshPost, setRefreshPost] = useGlobalState("refreshPost");
-  const subCategoryApi = `/pdf2/sub/category?id=${id}`;
-  const categoryApi = `/pdf2/category?id=${id}`;
-  let titleApi = `/pdf2/sub/category/title?id=${id}&title=`;
-  let idApi = `/pdf2/sub/category/by/id?subCategoryId=${id}&id=`;
-
-  const [activeUrl, setActiveUrl] = useState(subCategoryApi);
-
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      urlChange(activeUrl);
-      setRefreshPost(true);
-    }, 1000);
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, [activeUrl]);
+const Buttons = ({ setPdf2List }: ButtonType) => {
+  const mapData = (res: any) => {
+    const pdf2ListArray: pdf2BodyList[] = res.data.map((pdf2: pdf2Body) => ({
+      key: pdf2.id,
+      ...pdf2,
+    }));
+    setPdf2List(pdf2ListArray);
+  };
 
   return (
     <div
@@ -47,40 +42,32 @@ const Buttons = ({ id, urlChange }: ButtonType) => {
         shape="circle"
         icon={<GrRefresh />}
         onClick={(e) => {
-          setActiveUrl(categoryApi);
-        }}
-      />
-
-      {/* <Space style={{ display: "flex", width: "100%" }}> */}
-      <label style={{ marginRight: 5 }}>Sub Category</label>
-      <Button
-        type="primary"
-        style={{ marginRight: 5 }}
-        shape="circle"
-        icon={<GrRefresh />}
-        onClick={(e) => {
-          setActiveUrl(subCategoryApi);
+          searchPdf2All().then((res) => {
+            mapData(res);
+          });
         }}
       />
 
       <Search
         placeholder="Search By Id"
-        onSearch={(a) => {}}
+        onSearch={(a) => {
+          searchPdf2ById(a).then((res) => {
+            mapData(res);
+          });
+        }}
         enterButton
         style={{ width: "30%", marginRight: 5 }}
-        onChange={(e) => {
-          setActiveUrl(idApi + e.target.value);
-        }}
       />
 
       <Search
-        placeholder="Search By Name"
-        onSearch={(a) => {}}
+        placeholder="Search By Title"
+        onSearch={(a) => {
+          searchPdf2ByTitle(a).then((res) => {
+            mapData(res);
+          });
+        }}
         enterButton
         style={{ width: "30%" }}
-        onChange={(e) => {
-          setActiveUrl(titleApi + e.target.value);
-        }}
       />
       {/* </Space> */}
     </div>

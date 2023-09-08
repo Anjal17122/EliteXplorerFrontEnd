@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, message } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
 import { PDF1, PDF1List } from "../../Service/SaveToc/TocType";
 import { clonePdf1, getAllPdf1 } from "../../Service/Pdf1List/Pdf1ListApi";
-import DeleteList from "./DeleteList";
+
 import Pdf1SendEmailModal from "./Pdf1SendEmailModal";
 import { checkMainDownloadable } from "../../Utils/Request/Method";
 

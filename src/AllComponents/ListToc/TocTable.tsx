@@ -10,7 +10,7 @@ import { downloadpdfTOC } from "../../Utils/Request/Method";
 import TocActionMenu from "./TocActionMenu";
 type tableFill = { tableData: PDF1List[]; setData: (data: PDF1List[]) => void };
 const TocTable = ({ tableData, setData }: tableFill) => {
-  const size = 3;
+  const size = 4;
   // const [current, setCurrent] = useState(0);
   // const [total, setTotal] = useState(50);
   const [loading, setLoading] = useState(false);

@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import { TableDataType } from "./CategoryListType";
-import { GET_REQUEST } from "../../Utils/Request/Method";
-import { mapTable } from "./helper";
-import { useGlobalState } from "../../GlobalState/GloabalStates";
+import { pdf2BodyList } from "../../Service/SavePdf2/Pdf2Type";
 
-const columns: ColumnsType<TableDataType> = [
+const columns: ColumnsType<pdf2BodyList> = [
   {
     title: "ID",
-    dataIndex: "_id",
+    dataIndex: "id",
     key: "id",
   },
   {
@@ -18,45 +14,21 @@ const columns: ColumnsType<TableDataType> = [
     key: "title",
   },
   {
-    title: "Category",
-    dataIndex: "category",
-    key: "category",
+    title: "Subtitle",
+    dataIndex: "subTitle",
+    key: "subTitle",
   },
 ];
 
-const data: TableDataType[] = [];
-
 type TableUrl = {
-  activeUrl: string;
   selectedItem: (pdf2Id: string) => void;
+  tableData: pdf2BodyList[];
 };
-const TableComponent = ({ activeUrl, selectedItem }: TableUrl) => {
-  const [refreshPost, setRefreshPost] = useGlobalState("refreshPost");
-  const size = 2;
-  const [tableList, setTableList] = useState(data);
-  const [totalElement, setTotalElement] = useState(5);
-  const [pageChange, setPageChange] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [current, setCurrent] = useState(1);
-  useEffect(() => {
-    if (refreshPost) {
-      setCurrent(1);
-      setPageChange(0);
-    } else {
-      setCurrent(pageChange + 1);
-    }
-    setLoading(true);
-    GET_REQUEST(`${activeUrl}&size=${size}&page=${pageChange}`).then((res) => {
-      setTableList(mapTable(res.data.content));
-      setTotalElement(res.data.totalElements);
-      setLoading(false);
-    });
-  }, [pageChange, activeUrl]);
-
+const TableComponent = ({ tableData, selectedItem }: TableUrl) => {
+  const size = 4;
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     selectedItem(newSelectedRowKeys[0].toString());
   };
-
   const rowSelection = {
     onChange: onSelectChange,
   };
@@ -65,17 +37,12 @@ const TableComponent = ({ activeUrl, selectedItem }: TableUrl) => {
     <Table
       rowSelection={{ type: "radio", ...rowSelection }}
       columns={columns}
-      dataSource={tableList}
+      dataSource={tableData}
       pagination={{
-        current: current,
         pageSize: size,
-        total: totalElement,
-        onChange: (page) => {
-          setPageChange(page - 1);
-          setRefreshPost(false);
-        },
+        hideOnSinglePage: true,
       }}
-      loading={loading}
+      // loading={loading}
     />
   );
 };

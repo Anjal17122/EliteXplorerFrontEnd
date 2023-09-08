@@ -1,4 +1,3 @@
-import React from "react";
 import type { MenuProps } from "antd";
 import { Button, Dropdown } from "antd";
 import { MenuOutlined } from "@ant-design/icons";

@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Input, Modal, Radio, Row } from "antd";
 import FormItem from "../component/FormItem";
-import { PdfType, sendEmailType } from "../../Service/SaveToc/TocType";
+import {
+  PDF1,
+  PdfType,
+  mapPdf1ToSendEmail,
+  sendEmailType,
+} from "../../Service/SaveToc/TocType";
 import { sendEmail } from "../../Utils/Request/Method";
+import { getTocPdf1ById } from "../../Service/SaveToc/TocApi";
 
 type modalBody = {
   pdf1Id: string;
@@ -13,20 +19,29 @@ const TocSendEmailModal = ({ pdf1Id, open, setOpen }: modalBody) => {
   const [form] = Form.useForm();
 
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const handleOk = () => {
-    setConfirmLoading(true);
-    const formValues: sendEmailType = form.getFieldsValue();
-    const finalValue: sendEmailType = {
-      ...formValues,
-      pdfId: pdf1Id,
-      pdfType: PdfType.tocitinerary,
-    };
-    sendEmail(finalValue).then((res) => {
-      setConfirmLoading(false);
-      form.resetFields();
-      setOpen(false);
+
+  useEffect(() => {
+    getTocPdf1ById(pdf1Id).then((res) => {
+      const pdf1Data: PDF1 = res.data;
+      const mappedData: sendEmailType = mapPdf1ToSendEmail(pdf1Data);
+      form.setFieldsValue(mappedData);
     });
-    console.log(finalValue);
+  }, []);
+  const handleOk = () => {
+    form.validateFields().then((validatedFormData) => {
+      setConfirmLoading(true);
+      const formValues: sendEmailType = form.getFieldsValue();
+      const finalValue: sendEmailType = {
+        ...formValues,
+        pdfId: pdf1Id,
+        pdfType: PdfType.tocitinerary,
+      };
+      sendEmail(finalValue).then((res) => {
+        setConfirmLoading(false);
+        setOpen(false);
+      });
+      console.log(finalValue);
+    });
   };
 
   const handleCancel = () => {

@@ -44,9 +44,9 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
       ...w,
       image1: image1S,
       image2: image2S,
-      subCategoryId: Array.isArray(w.subCategoryId)
-        ? w.subCategoryId[1]
-        : w.subCategoryId,
+      // subCategoryId: Array.isArray(w.subCategoryId)
+      //   ? w.subCategoryId[1]
+      //   : w.subCategoryId,
     };
 
     onFormSave(abc);
@@ -113,6 +113,7 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
           />
         </Col>
       </Row>
+      {/* 
       <Row gutter={[16, 16]}>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
           <Form.Item
@@ -135,8 +136,7 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
         </Col>
         {/* <Col span={12} md={12} lg={12} sm={24} xs={24}>
           <FormItem name="hint" label="Hint" />
-        </Col> */}
-      </Row>
+          </Col>  </Row> */}
 
       <Row gutter={[16, 16]}>
         <Col span={12} md={16} lg={16} sm={24} xs={24}>

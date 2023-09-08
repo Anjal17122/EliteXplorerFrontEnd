@@ -20,7 +20,7 @@ const HomePage = () => {
             type="primary"
             shape="round"
             size={"large"}
-            style={{ float: "right" }}
+            style={{ marginBottom: "5px" }}
             disabled={buttonState}
           >
             Update

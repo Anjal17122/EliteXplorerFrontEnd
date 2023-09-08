@@ -1,26 +1,16 @@
-import { Button, Space, Table } from "antd";
-import { useEffect, useState } from "react";
+import { Space, Table } from "antd";
+import { useState } from "react";
 import { ColumnsType } from "antd/es/table";
-import { PDF1, PDF1List } from "../../Service/SaveToc/TocType";
-import { Link, useNavigate } from "react-router-dom";
-import { AllUrls } from "../../Utils/MyUrls/MyUrls";
-import type { MenuProps } from "antd";
-import {
-  downlaodPDFMain,
-  downlaodPDFMainToc,
-} from "../../Utils/Request/Method";
-import MenuComponent from "../component/MenuComponent";
+import { PDF1List } from "../../Service/SaveToc/TocType";
+
 import Pdf1DownloadMenu from "./Pdf1DownloadMenu";
 import Pdf1ActionMenu from "./Pdf1ActionMenu";
 import DeleteList from "./DeleteList";
-import Pdf1SendEmailModal from "./Pdf1SendEmailModal";
 
 type fulldata = { data: PDF1List[]; setData: (data: PDF1List[]) => void };
 const ListTablePdf1 = ({ data, setData }: fulldata) => {
-  const size = 5;
+  const size = 4;
   const [loading, setLoading] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
 
   const columns: ColumnsType<PDF1List> = [
     {
