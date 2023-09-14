@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
 import { PDF1, PDF1List } from "../../Service/SaveToc/TocType";
 import { clonePdf1, getAllPdf1 } from "../../Service/Pdf1List/Pdf1ListApi";
-
 import Pdf1SendEmailModal from "./Pdf1SendEmailModal";
 import { checkMainDownloadable } from "../../Utils/Request/Method";
 
@@ -33,7 +32,7 @@ const Pdf1ActionMenu = ({ id, setData, setTableLoading }: DownloadMenuBody) => {
       label: "Clone Itinerary",
       onClick: () => {
         setTableLoading(true);
-        clonePdf1(id).then((a) => {
+        clonePdf1(id).then(() => {
           getAllPdf1().then((res) => {
             const pdf1ListArray: PDF1List[] = res.data.map((pdf1: PDF1) => ({
               key: pdf1.id,

@@ -59,6 +59,7 @@ export const cloneToc = (id: string) => {
   const url = `${baseUrl}/pdf1/toc/clone/${id}`;
   return tocCommonGetRequests(url);
 };
+
 export const transferToc = (id: string) => {
   const url = `${baseUrl}/pdf1/toc/transfer/${id}`;
   return tocCommonGetRequests(url);

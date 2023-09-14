@@ -66,18 +66,7 @@ const ListTablePdf1 = ({ data, setData }: fulldata) => {
     },
   ];
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getAllTocPdf(current, size).then((res) => {
-  //     const pdf1ListArray = res.data.content.map((pdf1: PDF1) => ({
-  //       key: pdf1.id,
-  //       ...pdf1,
-  //     }));
-  //     setTableData(pdf1ListArray);
-  //     setTotal(res.data.totalElements);
-  //     setLoading(false);
-  //   });
-  // }, [current]);
+
 
   return (
     <>
