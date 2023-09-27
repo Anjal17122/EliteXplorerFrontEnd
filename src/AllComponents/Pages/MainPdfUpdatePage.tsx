@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { PDF1, Pdf1TocData } from "../../Service/SaveToc/TocType";
+import { PDF1 } from "../../Service/SaveToc/TocType";
 import TocDetail1 from "../SaveTOC/TocDetail1";
 import moment from "moment";
 import { Button } from "antd";
-import { ArrowRightOutlined, DownloadOutlined } from "@ant-design/icons";
-import { downlaodPDFMain } from "../../Utils/Request/Method";
+import { ArrowRightOutlined } from "@ant-design/icons";
 import { getPdf1ById, savePdf1 } from "../../Service/Pdf1List/Pdf1ListApi";
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
 import EmailAndDownloadBtn from "../component/EmailAndDownloadBtn";

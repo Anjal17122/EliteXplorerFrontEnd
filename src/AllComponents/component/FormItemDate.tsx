@@ -1,4 +1,4 @@
-import { DatePicker, Form, Input, InputNumber } from "antd";
+import { DatePicker, Form } from "antd";
 
 type Props = {
   name: string;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, message } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
@@ -34,7 +34,7 @@ const TocActionMenu = ({ id, setData, setTableLoading }: TocActionBody) => {
       label: "Clone Itinerary",
       onClick: () => {
         setTableLoading(true);
-        cloneToc(id).then((a) => {
+        cloneToc(id).then(() => {
           getAllTocPdf().then((res) => {
             const pdf1ListArray: PDF1List[] = res.data.map((pdf1: PDF1) => ({
               key: pdf1.id,
@@ -53,7 +53,7 @@ const TocActionMenu = ({ id, setData, setTableLoading }: TocActionBody) => {
       label: "Basket Transfer",
       onClick: () => {
         setTableLoading(true);
-        transferToc(id).then((a) => {
+        transferToc(id).then(() => {
           getAllTocPdf().then((res) => {
             const pdf1ListArray: PDF1List[] = res.data.map((pdf1: PDF1) => ({
               key: pdf1.id,

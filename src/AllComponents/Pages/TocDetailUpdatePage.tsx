@@ -6,10 +6,6 @@ import { getTocPdf1ById, savePdfToc1 } from "../../Service/SaveToc/TocApi";
 import TocDetail2 from "../SaveTOC/TocDetail2";
 import moment from "moment";
 import TocDetail2Table from "../SaveTOC/TocDetail2Table";
-import { Button } from "antd";
-import { DownloadOutlined } from "@ant-design/icons";
-import { downloadpdfTOC } from "../../Utils/Request/Method";
-import TocSendEmailModal from "../ListToc/TocSendEmailModal";
 import TocEmailAndDownloadBtn from "../component/TocEmailAndDownloadBtn";
 
 const TocDetailUpdatePage = () => {

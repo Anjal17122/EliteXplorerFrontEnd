@@ -1,4 +1,4 @@
-import { Space, Table, Tag, Button, Pagination, message } from "antd";
+import { Space, Table, Button } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { Pdf1TocData } from "../../Service/SaveToc/TocType";
 import { useEffect, useState } from "react";
@@ -64,7 +64,7 @@ const TocDetail2Table = ({
           <Button
             type="link"
             onClick={() => {
-              deleteTocById(record.id).then((res) => {
+              deleteTocById(record.id).then(() => {
                 tableRefresh(record.id);
               });
             }}

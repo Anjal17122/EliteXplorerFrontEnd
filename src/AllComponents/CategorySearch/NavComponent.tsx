@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import { useEffect, useState } from "react";
+import { SettingOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import { GET_REQUEST } from "../../Utils/Request/Method";
@@ -51,6 +47,7 @@ const NavComponent = ({ currentNav, urlChange }: navType) => {
     currentNav(e.key);
     setRefreshPost(true);
     urlChange("/pdf2/sub/category?id=" + e.key);
+    console.log(refreshPost);
   };
 
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Pdf2FormSave.css";
-import { Cascader, Form, Input, Row, Col, message } from "antd";
+import { Form, Input, Row, Col, message } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import { cascaderOption, pdf2Body } from "../../Service/SavePdf2/Pdf2Type";
 import { getAllCategory } from "../../Service/SavePdf2/Pdf2Api";
@@ -20,7 +20,7 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
   const [image2S, setImage2] = useState<string>();
   const [form] = Form.useForm();
 
-  const tourCategory = useQuery<cascaderOption[], { message: string }>({
+  useQuery<cascaderOption[], { message: string }>({
     queryKey: ["category"],
     queryFn: () => getAllCategory().then((res) => mapCascadeCategory(res.data)),
   });

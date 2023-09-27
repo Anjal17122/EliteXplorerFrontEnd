@@ -1,7 +1,5 @@
 import { Button, Input } from "antd";
-import { useState, useEffect } from "react";
 import { GrRefresh } from "react-icons/Gr";
-import { useGlobalState } from "../../GlobalState/GloabalStates";
 import { pdf2Body, pdf2BodyList } from "../../Service/SavePdf2/Pdf2Type";
 import {
   searchPdf2All,
@@ -41,7 +39,7 @@ const Buttons = ({ setPdf2List }: ButtonType) => {
         style={{ marginRight: 10 }}
         shape="circle"
         icon={<GrRefresh />}
-        onClick={(e) => {
+        onClick={() => {
           searchPdf2All().then((res) => {
             mapData(res);
           });

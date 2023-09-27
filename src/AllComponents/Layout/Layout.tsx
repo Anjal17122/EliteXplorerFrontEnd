@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FileOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";

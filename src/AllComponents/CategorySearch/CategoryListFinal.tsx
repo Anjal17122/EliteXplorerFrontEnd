@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import Buttons from "./Buttons";
-import NavComponent from "./NavComponent";
 import TableComponent from "./TableComponent";
 import { pdf2Body, pdf2BodyList } from "../../Service/SavePdf2/Pdf2Type";
 import { searchPdf2All } from "../../Service/Pdf2List/Pdf2ListApi";
 
 type finalList = { selectedItemId: (id: string) => void };
 const CategoryListFinal = ({ selectedItemId }: finalList) => {
-  const initialUrl: string = "/pdf2/sub/category?id=1";
-  const [_id, setId] = useState("1");
-  const [acitveUrl, setActiveUrl] = useState(initialUrl);
-
   const [tableData, setTableData] = useState<pdf2BodyList[]>([]);
   useEffect(() => {
     searchPdf2All().then((res) => {

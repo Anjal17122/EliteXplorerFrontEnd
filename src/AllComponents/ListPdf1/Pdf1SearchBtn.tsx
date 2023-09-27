@@ -40,7 +40,7 @@ const Pdf1SearchBtn = ({ setData }: ButtonType) => {
         style={{ marginRight: 10 }}
         shape="circle"
         icon={<GrRefresh />}
-        onClick={(e) => {
+        onClick={() => {
           getAllPdf1().then((res) => {
             mapData(res);
           });
@@ -56,7 +56,6 @@ const Pdf1SearchBtn = ({ setData }: ButtonType) => {
         }}
         enterButton
         style={{ width: "20%", marginRight: 5 }}
-        onChange={(e) => {}}
       />
       <Search
         placeholder="Search By Name"
@@ -67,9 +66,6 @@ const Pdf1SearchBtn = ({ setData }: ButtonType) => {
         }}
         enterButton
         style={{ width: "30%" }}
-        onChange={(e) => {
-          //   setActiveUrl(titleApi + e.target.value);
-        }}
       />
 
       <Search
@@ -81,7 +77,6 @@ const Pdf1SearchBtn = ({ setData }: ButtonType) => {
         }}
         enterButton
         style={{ width: "30%" }}
-        onChange={(e) => {}}
       />
       {/* </Space> */}
     </div>

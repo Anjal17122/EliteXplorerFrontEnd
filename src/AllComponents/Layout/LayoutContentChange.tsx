@@ -1,4 +1,3 @@
-import NavComponent from "../CategorySearch/NavComponent";
 import HomePage from "../Pages/HomePage";
 
 type layoutChange = { name: string };

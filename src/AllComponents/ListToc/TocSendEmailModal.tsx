@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Input, Modal, Radio, Row } from "antd";
+import { useEffect, useState } from "react";
+import { Col, Form, Input, Modal, Row } from "antd";
 import FormItem from "../component/FormItem";
 import {
   PDF1,
@@ -28,7 +28,7 @@ const TocSendEmailModal = ({ pdf1Id, open, setOpen }: modalBody) => {
     });
   }, []);
   const handleOk = () => {
-    form.validateFields().then((validatedFormData) => {
+    form.validateFields().then(() => {
       setConfirmLoading(true);
       const formValues: sendEmailType = form.getFieldsValue();
       const finalValue: sendEmailType = {
@@ -36,7 +36,7 @@ const TocSendEmailModal = ({ pdf1Id, open, setOpen }: modalBody) => {
         pdfId: pdf1Id,
         pdfType: PdfType.tocitinerary,
       };
-      sendEmail(finalValue).then((res) => {
+      sendEmail(finalValue).then(() => {
         setConfirmLoading(false);
         setOpen(false);
       });

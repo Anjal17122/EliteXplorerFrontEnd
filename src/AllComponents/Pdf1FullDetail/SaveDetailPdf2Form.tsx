@@ -6,8 +6,6 @@ import { updatePdf1Pdf2 } from "../../Service/Pdf1Pdf2/Pdf1Pdf2Api";
 import { Pdf1Pdf2Type } from "../../Service/Pdf1Pdf2/Pdf1Pdf2Type";
 import Pdf1Pdf2Modal from "./Pdf1Pdf2Modal";
 import { Button } from "antd";
-import { Pdf1TocData } from "../../Service/SaveToc/TocType";
-import { getPdf1ById } from "../../Service/Pdf1List/Pdf1ListApi";
 
 type detail = {
   pdf1Pdf2Id: number;
@@ -30,7 +28,6 @@ const SaveDetailPdf2Form = ({
       setResult(res.data);
       // setResult(res.data);
     });
-
   }, []);
   const saveForm = (param: pdf2Body) => {
     const body: pdf2Body = {
@@ -41,6 +38,7 @@ const SaveDetailPdf2Form = ({
       //   console.log(res.data);
       updatePdf1Pdf2(pdf1Pdf2Id.toString(), ress.data.id.toString()).then(
         (res) => {
+          console.log(pdf1Id);
           reloadNav(res.data);
         }
       );

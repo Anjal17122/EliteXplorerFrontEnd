@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Radio, Tabs } from "antd";
+import { useEffect, useState } from "react";
+import { Tabs } from "antd";
 import { getPdf1Pdf2ByPdf1Id } from "../../Service/Pdf1Pdf2/Pdf1Pdf2Api";
 import SaveDetailPdf2Form from "./SaveDetailPdf2Form";
 import { Pdf1Pdf2Type } from "../../Service/Pdf1Pdf2/Pdf1Pdf2Type";
 
-type TabPosition = "left" | "right" | "top" | "bottom";
 type idDetail = { pdf1Id: string };
 const NavDetail = ({ pdf1Id }: idDetail) => {
   const [data, setData] = useState<Pdf1Pdf2Type[]>([]);

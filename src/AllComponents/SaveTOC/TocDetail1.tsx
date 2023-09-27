@@ -1,4 +1,4 @@
-import { Cascader, Col, Form, Input, Row, message } from "antd";
+import { Col, Form, Input, Row, message } from "antd";
 import ImageUpload from "../SavePdf2/ImageUpload";
 import FormItem from "../component/FormItem";
 import { SubmitBtn } from "../component/SubmitBtn";
@@ -19,7 +19,7 @@ const TocDetail1 = ({ result, onFormSave }: tocDetail1) => {
   const [image1S, setImage1] = useState<string>();
   const [form] = Form.useForm();
 
-  const tourCategory = useQuery<cascaderOption[], { message: string }>({
+  useQuery<cascaderOption[], { message: string }>({
     queryKey: ["category"],
     queryFn: () => getAllCategory().then((res) => mapCascadeCategory(res.data)),
   });

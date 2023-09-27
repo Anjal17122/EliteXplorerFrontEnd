@@ -40,7 +40,7 @@ const TocSearchBtn = ({ setData }: ButtonType) => {
         style={{ marginRight: 10 }}
         shape="circle"
         icon={<GrRefresh />}
-        onClick={(e) => {
+        onClick={() => {
           getAllTocPdf().then((res) => {
             mapData(res);
           });
@@ -56,7 +56,7 @@ const TocSearchBtn = ({ setData }: ButtonType) => {
         }}
         enterButton
         style={{ width: "20%", marginRight: 5 }}
-        onChange={(e) => {}}
+        onChange={() => {}}
       />
       <Search
         placeholder="Search By Name"
@@ -67,7 +67,7 @@ const TocSearchBtn = ({ setData }: ButtonType) => {
         }}
         enterButton
         style={{ width: "30%" }}
-        onChange={(e) => {
+        onChange={() => {
           //   setActiveUrl(titleApi + e.target.value);
         }}
       />
@@ -81,7 +81,7 @@ const TocSearchBtn = ({ setData }: ButtonType) => {
         }}
         enterButton
         style={{ width: "30%" }}
-        onChange={(e) => {}}
+        onChange={() => {}}
       />
       {/* </Space> */}
     </div>

@@ -5,8 +5,6 @@ import { AllUrls } from "./Utils/MyUrls/MyUrls";
 import HomePage from "./AllComponents/Pages/HomePage";
 import Pdf2FormUpdatePage from "./AllComponents/Pages/Pdf2FormUpdatePage";
 import Pdf2FormSavePage from "./AllComponents/Pages/Pdf2FromSavePage";
-import TocDetail1 from "./AllComponents/SaveTOC/TocDetail1";
-import { PDF1 } from "./Service/SaveToc/TocType";
 import TocDetailSave from "./AllComponents/Pages/TocDetailSave";
 import TocDetailUpdatePage from "./AllComponents/Pages/TocDetailUpdatePage";
 import TocListPage from "./AllComponents/Pages/TocListPage";

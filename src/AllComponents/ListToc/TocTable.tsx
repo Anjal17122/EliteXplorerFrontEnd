@@ -1,11 +1,8 @@
 import { Button, Space, Table } from "antd";
-import PaginationItem from "../component/Pagination";
-import { useEffect, useState } from "react";
-import { getAllTocPdf } from "../../Service/SaveToc/TocApi";
+
+import { useState } from "react";
 import { ColumnsType } from "antd/es/table";
-import { PDF1, PDF1List } from "../../Service/SaveToc/TocType";
-import { useNavigate } from "react-router-dom";
-import { AllUrls } from "../../Utils/MyUrls/MyUrls";
+import { PDF1List } from "../../Service/SaveToc/TocType";
 import { downloadpdfTOC } from "../../Utils/Request/Method";
 import TocActionMenu from "./TocActionMenu";
 type tableFill = { tableData: PDF1List[]; setData: (data: PDF1List[]) => void };
@@ -14,8 +11,6 @@ const TocTable = ({ tableData, setData }: tableFill) => {
   // const [current, setCurrent] = useState(0);
   // const [total, setTotal] = useState(50);
   const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   const columns: ColumnsType<PDF1List> = [
     {

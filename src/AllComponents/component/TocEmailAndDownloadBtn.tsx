@@ -1,6 +1,6 @@
 import { DownloadOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Col, Row } from "antd";
-import { downlaodPDFMainToc, downloadpdfTOC } from "../../Utils/Request/Method";
+import { downloadpdfTOC } from "../../Utils/Request/Method";
 import { useState } from "react";
 import TocSendEmailModal from "../ListToc/TocSendEmailModal";
 
