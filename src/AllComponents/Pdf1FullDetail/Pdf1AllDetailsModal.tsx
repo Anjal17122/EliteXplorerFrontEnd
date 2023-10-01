@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Modal } from "antd";
 
 import ViewPdf1AllDetails from "./ViewPdf1AllDetails";

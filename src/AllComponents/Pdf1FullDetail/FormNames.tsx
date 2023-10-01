@@ -1,13 +1,3 @@
-const formNames = [
-  { title: "hotelName", amount: "hotelPrice" },
-  { title: "flightName", amount: "flightPrice" },
-  { title: "guideName", amount: "guidePrice" },
-  { title: "transportName", amount: "transportPrice" },
-  { title: "entranceName", amount: "entrancePrice" },
-  { title: "permitName", amount: "permitPrice" },
-  { title: "mealName", amount: "mealPrice" },
-  { title: "extraName", amount: "extraPrice" },
-];
 export interface PricingTemplateInterface {
   id: number;
   hotelName: string;
