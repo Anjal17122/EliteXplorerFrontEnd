@@ -8,6 +8,7 @@ import { PDF1, PDF1List } from "../../Service/SaveToc/TocType";
 import { clonePdf1, getAllPdf1 } from "../../Service/Pdf1List/Pdf1ListApi";
 import Pdf1SendEmailModal from "./Pdf1SendEmailModal";
 import { checkMainDownloadable } from "../../Utils/Request/Method";
+import Pdf1AllDetailsModal from "../Pdf1FullDetail/Pdf1AllDetailsModal";
 
 type DownloadMenuBody = {
   id: string;
@@ -17,6 +18,7 @@ type DownloadMenuBody = {
 const Pdf1ActionMenu = ({ id, setData, setTableLoading }: DownloadMenuBody) => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
+  const [detailsModal, setDetailsModal] = useState(false);
 
   const items: MenuProps["items"] = [
     {
@@ -57,6 +59,13 @@ const Pdf1ActionMenu = ({ id, setData, setTableLoading }: DownloadMenuBody) => {
         });
       },
     },
+    {
+      key: "4",
+      label: "View Details",
+      onClick: () => {
+        setDetailsModal(true);
+      },
+    },
   ];
   return (
     <>
@@ -71,6 +80,11 @@ const Pdf1ActionMenu = ({ id, setData, setTableLoading }: DownloadMenuBody) => {
         </Button>
       </Dropdown>
       <Pdf1SendEmailModal setOpen={setModalOpen} open={modalOpen} pdf1Id={id} />
+      <Pdf1AllDetailsModal
+        modelOpen={detailsModal}
+        setModelOpen={setDetailsModal}
+        pdf1Id={id}
+      />
     </>
   );
 };

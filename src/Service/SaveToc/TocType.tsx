@@ -16,6 +16,8 @@ export interface PDF1 {
   file: string;
   subCategoryId: number;
   subCategory: string;
+  total: number;
+  totalAmountPrecisionError: number;
 }
 export interface sendEmailType {
   pdfId: string;
@@ -88,6 +90,8 @@ export const tocSample: PDF1 = {
   file: "sample.jpg",
   subCategoryId: 0,
   subCategory: "",
+  total: 2,
+  totalAmountPrecisionError: 3,
 };
 
 export const Pdf1ListSample: PDF1List = {

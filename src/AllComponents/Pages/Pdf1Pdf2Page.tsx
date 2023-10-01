@@ -13,7 +13,7 @@ const Pdf1Pdf2Page = () => {
     });
   }, []);
   return (
-    <div style={{ height: "200vh" }}>
+    <div style={{ height: "250vh" }}>
       {" "}
       <EmailAndDownloadBtn id={id === undefined ? "0" : id} />
       <NavDetail pdf1Id={id === undefined ? "0" : id} />
