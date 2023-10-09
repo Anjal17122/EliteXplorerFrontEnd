@@ -66,7 +66,7 @@ export type PricingDetailWithDays = {
   day: number;
 };
 
-export type PricingFullDetail = {
+export type PricingFullDetailType = {
   pdf1: PDF1;
   pricingDetails: PricingDetailWithDays[];
 };

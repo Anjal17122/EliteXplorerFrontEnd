@@ -18,6 +18,10 @@ export interface PDF1 {
   subCategory: string;
   total: number;
   totalAmountPrecisionError: number;
+  totalWithoutExtra: number;
+  tax: number;
+  buffer: number;
+  margin: number;
 }
 export interface sendEmailType {
   pdfId: string;
@@ -92,6 +96,10 @@ export const tocSample: PDF1 = {
   subCategory: "",
   total: 2,
   totalAmountPrecisionError: 3,
+  tax: 0,
+  buffer: 0,
+  margin: 0,
+  totalWithoutExtra: 0,
 };
 
 export const Pdf1ListSample: PDF1List = {

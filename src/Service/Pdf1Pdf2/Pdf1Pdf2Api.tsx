@@ -1,5 +1,7 @@
 import { baseUrl } from "../../Utils/Request/Constants";
+import { PDF1 } from "../SaveToc/TocType";
 import {
+  SavePricingPdf1,
   pdf1Pdf2CommonGetRequests,
   savePaymentDetail,
 } from "./Pdf1Pdf2Request";
@@ -28,4 +30,9 @@ export const pdf1pdf2PricingSave = (pdf1pdf2id: PricingTemplateInterface) => {
 export const getPricingDetailByPdf1 = (pdf1Id: string) => {
   const url = `${baseUrl}/pricing/template/pdf1?id=${pdf1Id}`;
   return pdf1Pdf2CommonGetRequests(url);
+};
+
+export const updatePricingPdf1 = (body: PDF1) => {
+  const url = `${baseUrl}/main/pdf1/price/update`;
+  return SavePricingPdf1(url, body);
 };
