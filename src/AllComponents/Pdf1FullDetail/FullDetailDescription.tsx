@@ -1,7 +1,12 @@
 import { Descriptions } from "antd";
 import { PDF1 } from "../../Service/SaveToc/TocType";
+
 type descriptionData = { pdf1: PDF1 };
 const FullDetailDescription = ({ pdf1 }: descriptionData) => {
+  const buffer = (pdf1.buffer / 100) * pdf1.totalWithoutExtra;
+  const margin = (pdf1.margin / 100) * (pdf1.totalWithoutExtra + buffer);
+  const tax = (pdf1.tax / 100) * (pdf1.totalWithoutExtra + buffer + margin);
+
   return (
     <Descriptions title={pdf1.preparedTo}>
       {/* <Descriptions.Item label="Trip Title">{pdf1.title}</Descriptions.Item> */}
@@ -29,20 +34,15 @@ const FullDetailDescription = ({ pdf1 }: descriptionData) => {
       </Descriptions.Item>
 
       <Descriptions.Item label="Buffer">
-        {(pdf1.buffer / 100) * pdf1.totalWithoutExtra}
+        {buffer}
         {"(" + pdf1.buffer + "%)"}
       </Descriptions.Item>
       <Descriptions.Item label="Margin">
-        {(pdf1.margin / 100) *
-          (pdf1.totalWithoutExtra +
-            (pdf1.buffer / 100) * pdf1.totalWithoutExtra)}
+        {margin}
         {"(" + pdf1.margin + "%)"}
       </Descriptions.Item>
       <Descriptions.Item label="Tax">
-        {(pdf1.tax / 100) *
-          (pdf1.totalWithoutExtra +
-            (pdf1.margin / 100) * pdf1.totalWithoutExtra +
-            (pdf1.buffer / 100) * pdf1.totalWithoutExtra)}
+        {tax}
         {"(" + pdf1.tax + "%)"}
       </Descriptions.Item>
       <Descriptions.Item label="Total Amount">{pdf1.total}</Descriptions.Item>
