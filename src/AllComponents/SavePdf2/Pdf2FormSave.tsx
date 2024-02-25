@@ -73,10 +73,10 @@ const Pdf2FormSave = ({ result, onFormSave }: manageData) => {
       </Row>
       <Row gutter={[16, 16]}>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
-          <FormItem name={"title"} label={"Title"} />
+          <FormItem name={"title"} label={"Tagline"} />
         </Col>
         <Col span={12} md={12} lg={12} sm={24} xs={24}>
-          <FormItem name={"subTitle"} label="Day and Movement" />
+          <FormItem name={"subTitle"} label="Daily Movement" />
         </Col>
       </Row>
       <Row gutter={[16, 16]}>

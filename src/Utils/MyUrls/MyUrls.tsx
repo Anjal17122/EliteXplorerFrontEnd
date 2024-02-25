@@ -11,4 +11,6 @@ export const AllUrls = {
   urlMainSaveListPage: "/main/save",
   urlMainUpdateListPage_: "/main/update",
   urlPdf1Pdf2DetailPage_: "/pdf1/detail",
+  urlPdfSettingInclusion: "/setting/inclusion",
+  urlRegisterPage: "/register",
 };

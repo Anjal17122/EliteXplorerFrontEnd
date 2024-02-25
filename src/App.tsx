@@ -12,6 +12,8 @@ import MainPdfListPage from "./AllComponents/Pages/MainPdfLisPage";
 import MainPdfSavePage from "./AllComponents/Pages/MainPdfSavePage";
 import MainPdfUpdatePage from "./AllComponents/Pages/MainPdfUpdatePage";
 import Pdf1Pdf2Page from "./AllComponents/Pages/Pdf1Pdf2Page";
+import PdfSettingForm from "./AllComponents/PdfSetting/PdfSettingForm";
+import RegisterPage from "./AllComponents/Pages/RegisterPage";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>{LayoutPath}</Route>
+          <Route path={AllUrls.urlRegisterPage} element={<RegisterPage />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -54,7 +57,7 @@ const LayoutPath = (
       path={AllUrls.urlPdf1Pdf2DetailPage_ + "/:id"}
       element={<Pdf1Pdf2Page />}
     />
-
+    <Route path={AllUrls.urlPdfSettingInclusion} element={<PdfSettingForm />} />
     <Route path={AllUrls.urlCheckPage} element={<h1>This is Check Page </h1>} />
   </>
 );

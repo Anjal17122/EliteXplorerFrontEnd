@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserOutlined } from "@ant-design/icons";
+import { SettingOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
@@ -37,6 +37,10 @@ const items: MenuItem[] = [
   getItem("Itinerary Basket", "x", <UserOutlined />, [
     getItem("Itinerary Basket Input ", AllUrls.urlMainSaveListPage),
     getItem("Itinerary Basket OUtput", AllUrls.urlMainPdfListPage),
+  ]),
+
+  getItem("Setting", "w", <SettingOutlined />, [
+    getItem("Inclusion Setting", AllUrls.urlPdfSettingInclusion),
   ]),
   getItem("Check Page", AllUrls.urlCheckPage, <UserOutlined />),
 ];
