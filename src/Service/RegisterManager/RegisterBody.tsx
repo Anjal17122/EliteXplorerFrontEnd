@@ -13,7 +13,7 @@ export type UserType = {
   filename: string;
 };
 
-enum UserStatus {
+export enum UserStatus {
   approved,
   unapproved,
   disabled,

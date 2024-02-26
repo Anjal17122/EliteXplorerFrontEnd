@@ -14,6 +14,9 @@ import MainPdfUpdatePage from "./AllComponents/Pages/MainPdfUpdatePage";
 import Pdf1Pdf2Page from "./AllComponents/Pages/Pdf1Pdf2Page";
 import PdfSettingForm from "./AllComponents/PdfSetting/PdfSettingForm";
 import RegisterPage from "./AllComponents/Pages/RegisterPage";
+import LoginPage from "./AllComponents/Pages/LoginPage";
+import ViewUserDetailPage from "./AllComponents/Pages/ViewUserDetailPage";
+import EditUserDetailPage from "./AllComponents/Pages/EditUserDetailPage";
 
 function App() {
   return (
@@ -22,6 +25,7 @@ function App() {
         <Routes>
           <Route element={<Layout />}>{LayoutPath}</Route>
           <Route path={AllUrls.urlRegisterPage} element={<RegisterPage />} />
+          <Route path={AllUrls.urlLoginPage} element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -58,6 +62,8 @@ const LayoutPath = (
       element={<Pdf1Pdf2Page />}
     />
     <Route path={AllUrls.urlPdfSettingInclusion} element={<PdfSettingForm />} />
+    <Route path={AllUrls.urlViewUserDetail} element={<ViewUserDetailPage />} />
+    <Route path={AllUrls.urlEditUserDetail} element={<EditUserDetailPage />} />
     <Route path={AllUrls.urlCheckPage} element={<h1>This is Check Page </h1>} />
   </>
 );

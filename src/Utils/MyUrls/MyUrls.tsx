@@ -1,6 +1,6 @@
 // _ in last of variable means it contains params
 export const AllUrls = {
-  urlHomePage: "/",
+  urlHomePage: "/home",
   urlUpdatePdfPage_: "/update/pdf2",
   urlSavePdf2Page: "/save/pdf2",
   urlCheckPage: "/check",
@@ -13,4 +13,8 @@ export const AllUrls = {
   urlPdf1Pdf2DetailPage_: "/pdf1/detail",
   urlPdfSettingInclusion: "/setting/inclusion",
   urlRegisterPage: "/register",
+  urlLoginPage: "/",
+  urlViewUserDetail: "/view/user",
+  urlEditUserDetail: "/edit/user",
+  urlUserManagement: "/manage/user",
 };

@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SettingOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import {
+  Avatar,
+  Breadcrumb,
+  Dropdown,
+  Layout,
+  Menu,
+  Tooltip,
+  theme,
+} from "antd";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
+import { localStorageLoginSuccess } from "../../Utils/Request/LocalStorageConstant";
+import { UserType } from "../../Service/RegisterManager/RegisterBody";
+import { LoginTypeSuccess } from "../../Service/LoginManager/LoginBody";
 const { Header, Content, Footer, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -42,20 +53,54 @@ const items: MenuItem[] = [
   getItem("Setting", "w", <SettingOutlined />, [
     getItem("Inclusion Setting", AllUrls.urlPdfSettingInclusion),
   ]),
-  getItem("Check Page", AllUrls.urlCheckPage, <UserOutlined />),
 ];
 
-const Typography: React.FC = () => {
+const Typography = () => {
   const history = useNavigate();
 
   const location = useLocation();
 
   const [collapsed, setCollapsed] = useState(false);
+  const [menuItems, setMenuItems] = useState<MenuItem[]>(items);
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const userDropDownItems: MenuProps["items"] = [
+    {
+      key: "1",
+      label: "View Detail",
+      onClick: () => {
+        history(`${AllUrls.urlViewUserDetail}`);
+      },
+    },
+
+    {
+      key: "2",
+      label: "Logout",
+      onClick: () => {
+        localStorage.removeItem(localStorageLoginSuccess);
+        history(`${AllUrls.urlLoginPage}`);
+      },
+    },
+  ];
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem(localStorageLoginSuccess);
+    if (storedUserData) {
+      const userData: LoginTypeSuccess = JSON.parse(storedUserData);
+      if (userData.roles === "ROLE_Admin") {
+        const adminPanelItems: MenuItem[] = [
+          getItem("Admin Panel", "yz", <UserOutlined />, [
+            getItem("User Management", AllUrls.urlUserManagement),
+          ]),
+        ];
+        const newAdminPanelItems: MenuItem[] = [...items, ...adminPanelItems];
+        setMenuItems(newAdminPanelItems);
+      }
+    }
+  }, []);
   return (
     <Layout style={{ minHeight: "100vh" }} hasSider>
       <Sider
@@ -71,7 +116,7 @@ const Typography: React.FC = () => {
             history(e.key);
           }}
           mode="inline"
-          items={items}
+          items={menuItems}
         />
       </Sider>
       <Layout>
@@ -79,11 +124,28 @@ const Typography: React.FC = () => {
           style={{
             padding: 0,
             background: colorBgContainer,
-            display: "flex",
-            justifyContent: "center",
           }}
         >
-          <h2>Elite Explorer</h2>
+          <Dropdown
+            trigger={["click"]}
+            menu={{ items: userDropDownItems }}
+            placement="bottom"
+            arrow={{ pointAtCenter: true }}
+          >
+            <Avatar
+              style={{
+                verticalAlign: "middel",
+                float: "right",
+                marginTop: "13px",
+                marginRight: "40px",
+              }}
+              size="large"
+              gap={1}
+              icon={<UserOutlined />}
+            />
+          </Dropdown>
+
+          <h2 style={{ textAlign: "center" }}>Elite Explorer</h2>
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>

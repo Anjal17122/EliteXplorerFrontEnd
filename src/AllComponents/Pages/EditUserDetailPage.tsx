@@ -1,17 +1,28 @@
-import { useNavigate } from "react-router-dom";
-import { AllUrls } from "../../Utils/MyUrls/MyUrls";
 import SaveRegister from "../Register/RegisterPage";
 import { UserType } from "../../Service/RegisterManager/RegisterBody";
-import { registerUserApi } from "../../Service/RegisterManager/RegisterApi";
-import { Card, ConfigProvider, message } from "antd";
+import {
+  editUserApi,
+  getByLoggedInUserApi,
+} from "../../Service/RegisterManager/RegisterApi";
+import { Card, ConfigProvider } from "antd";
+import { useEffect, useState } from "react";
 
-const RegisterPage = () => {
-  const navigate = useNavigate();
-  const onDataReceived = (data: UserType) => {
-    registerUserApi(data).then((res) => {
+const EditUserDetailPage = () => {
+  const [userDetail, setUserDetail] = useState<UserType>();
+
+  useEffect(() => {
+    getByLoggedInUserApi().then((res) => {
       console.log(res.data);
-      navigate(`${AllUrls.urlUpdateTocPage_}/${res.data.id}`);
-      message.success("Detail Sent For Verfication");
+      setUserDetail(res.data);
+    });
+  }, []);
+  const onDataReceived = (data: UserType) => {
+    const fullData = {
+      ...data,
+      id: userDetail != undefined ? userDetail.id : 0,
+    };
+    editUserApi(fullData).then((res) => {
+      setUserDetail(res.data);
     });
   };
   return (
@@ -39,25 +50,17 @@ const RegisterPage = () => {
           }}
         >
           <Card
-            title="User Registration"
+            title="Edit User Detail"
             bordered={false}
             style={{
-              width: "60%",
+              width: "90%",
               textAlign: "center",
-              // textAlign: "center",
-              // backgroundColor: "#253241",
             }}
           >
             <SaveRegister
               onRegistrationSave={onDataReceived}
-              userBody={undefined}
+              userBody={userDetail}
             />
-            <div style={{ textAlign: "center", color: "black" }}>
-              OR
-              <br></br>
-              Already have an account?{" "}
-              <a href={`${AllUrls.urlLoginPage}`}>Login</a>
-            </div>
           </Card>
         </ConfigProvider>
       </div>
@@ -65,4 +68,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default EditUserDetailPage;

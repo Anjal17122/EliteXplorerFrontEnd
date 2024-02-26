@@ -3,7 +3,7 @@ import { useStoreGlobal } from "../../GlobalState/GloabalStates";
 
 type Props = {
   text?: string;
-  width?: "auto" | number;
+  width?: "auto" | string;
   style?: object;
 };
 
