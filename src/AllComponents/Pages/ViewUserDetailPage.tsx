@@ -3,6 +3,7 @@ import { getByLoggedInUserApi } from "../../Service/RegisterManager/RegisterApi"
 import {
   UserStatus,
   UserType,
+  defaultUser,
 } from "../../Service/RegisterManager/RegisterBody";
 import UserDetailViewTable from "../UserDetailView/UserDetailViewTable";
 import { Button } from "antd";
@@ -11,20 +12,7 @@ import { AllUrls } from "../../Utils/MyUrls/MyUrls";
 
 const ViewUserDetailPage = () => {
   const navigate = useNavigate();
-  const defaultUser: UserType = {
-    id: 0,
-    fullName: "",
-    email: "",
-    phoneNo: "",
-    specialization: "",
-    username: "",
-    password: "",
-    userStatus: UserStatus.unapproved, // assuming UserStatus is an enum with default value ACTIVE
-    personRoleId: 0,
-    personRole: "",
-    registerDate: "",
-    filename: "",
-  };
+
   const [userData, setUserData] = useState<UserType>(defaultUser);
 
   useEffect(() => {

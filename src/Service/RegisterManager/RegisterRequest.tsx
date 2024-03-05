@@ -39,3 +39,13 @@ export const getLoggedInUser = async (url: string) => {
     checkIfError(error);
   }
 };
+
+export const getAllUserRequest = async (url: string) => {
+  try {
+    const res = await axios.get(url, headers());
+    // message.success(res.data.message);
+    return res.data;
+  } catch (error: unknown) {
+    checkIfError(error);
+  }
+};

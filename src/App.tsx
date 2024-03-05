@@ -17,6 +17,7 @@ import RegisterPage from "./AllComponents/Pages/RegisterPage";
 import LoginPage from "./AllComponents/Pages/LoginPage";
 import ViewUserDetailPage from "./AllComponents/Pages/ViewUserDetailPage";
 import EditUserDetailPage from "./AllComponents/Pages/EditUserDetailPage";
+import UserManagementPage from "./AllComponents/Pages/UserManagementPage";
 
 function App() {
   return (
@@ -64,6 +65,8 @@ const LayoutPath = (
     <Route path={AllUrls.urlPdfSettingInclusion} element={<PdfSettingForm />} />
     <Route path={AllUrls.urlViewUserDetail} element={<ViewUserDetailPage />} />
     <Route path={AllUrls.urlEditUserDetail} element={<EditUserDetailPage />} />
+    <Route path={AllUrls.urlUserManagement} element={<UserManagementPage />} />
+
     <Route path={AllUrls.urlCheckPage} element={<h1>This is Check Page </h1>} />
   </>
 );
