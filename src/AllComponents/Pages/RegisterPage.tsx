@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const onDataReceived = (data: UserType) => {
     registerUserApi(data).then((res) => {
       console.log(res.data);
-      navigate(`${AllUrls.urlUpdateTocPage_}/${res.data.id}`);
+      navigate(`${AllUrls.urlLoginPage}`);
       message.success("Detail Sent For Verfication");
     });
   };

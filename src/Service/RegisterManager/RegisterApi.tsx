@@ -49,3 +49,8 @@ export const chagneUserRoleApi = (userId: number, roleId: string) => {
     baseUrl + "/user/change/role?userId=" + userId + "&roleId=" + roleId;
   return getAllUserRequest(url);
 };
+
+export const changeUserPasswordApi = (body: UserType) => {
+  const url = baseUrl + "/user/change/password";
+  return saveUser(url, body);
+};

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Space, Table } from "antd";
+import { Button, Popover, Space, Table } from "antd";
 import type { TableProps } from "antd";
 import {
   UserType,
@@ -14,6 +14,7 @@ import {
 } from "../../Service/RegisterManager/RegisterMapper";
 import UserApproveDropdown from "./UserApproveDropdown";
 import UserRoleDropdown from "./UserRoleDropdown";
+import ChangePasswrodButton from "./ChangePasswordPopOver";
 
 const UserManagementTable = () => {
   const [userData, setUserData] = useState<UserTypeWithKey[]>();
@@ -22,6 +23,7 @@ const UserManagementTable = () => {
     useState<boolean>(false);
   const [userViewDetailSingle, setUserViewDetailSingle] =
     useState<UserType>(defaultUser);
+
   useEffect(() => {
     getAllUserApi().then((res) => {
       const userTypeWithData: UserType[] = res.data;
@@ -87,7 +89,14 @@ const UserManagementTable = () => {
           >
             View Detail
           </Button>
-          <Button type="link">Change Password</Button>
+
+          <Popover
+            content={<ChangePasswrodButton id={record.id} />}
+            title="Change Password"
+            trigger="click"
+          >
+            <Button type="link">Change Password</Button>
+          </Popover>
         </Space>
       ),
     },

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getByLoggedInUserApi } from "../../Service/RegisterManager/RegisterApi";
 import {
-  UserStatus,
   UserType,
   defaultUser,
 } from "../../Service/RegisterManager/RegisterBody";

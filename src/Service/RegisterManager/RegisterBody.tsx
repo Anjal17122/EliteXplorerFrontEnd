@@ -1,16 +1,16 @@
 export type UserType = {
   id: number;
-  fullName: string;
-  email: string;
-  phoneNo: string;
-  specialization: string;
-  username: string;
-  password: string;
-  userStatus: UserStatus;
-  personRoleId: number;
-  personRole: string;
-  registerDate: string;
-  filename: string;
+  fullName?: string;
+  email?: string;
+  phoneNo?: string;
+  specialization?: string;
+  username?: string;
+  password?: string;
+  userStatus?: UserStatus;
+  personRoleId?: number;
+  personRole?: string;
+  registerDate?: string;
+  filename?: string;
 };
 
 export type PersonRoleType = {
@@ -21,17 +21,17 @@ export type PersonRoleType = {
 export type UserTypeWithKey = {
   key: number;
   id: number;
-  fullName: string;
-  email: string;
-  phoneNo: string;
-  specialization: string;
-  username: string;
-  password: string;
-  userStatus: UserStatus;
-  personRoleId: number;
-  personRole: string;
-  registerDate: string;
-  filename: string;
+  fullName?: string;
+  email?: string;
+  phoneNo?: string;
+  specialization?: string;
+  username?: string;
+  password?: string;
+  userStatus?: UserStatus;
+  personRoleId?: number;
+  personRole?: string;
+  registerDate?: string;
+  filename?: string;
 };
 export enum UserStatus {
   approved,
