@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { SettingOutlined, UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import {
-  Avatar,
-  Breadcrumb,
-  Dropdown,
-  Layout,
-  Menu,
-  Tooltip,
-  theme,
-} from "antd";
+import { Avatar, Breadcrumb, Dropdown, Layout, Menu, theme } from "antd";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 
 import { AllUrls } from "../../Utils/MyUrls/MyUrls";
 import { localStorageLoginSuccess } from "../../Utils/Request/LocalStorageConstant";
-import { UserType } from "../../Service/RegisterManager/RegisterBody";
 import { LoginTypeSuccess } from "../../Service/LoginManager/LoginBody";
 const { Header, Content, Footer, Sider } = Layout;
 

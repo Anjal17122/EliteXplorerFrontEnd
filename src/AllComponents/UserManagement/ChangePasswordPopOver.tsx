@@ -26,4 +26,5 @@ const ChangePasswrodButton = ({ id }: ChangePasswrodButtonType) => {
     />
   );
 };
+
 export default ChangePasswrodButton;
